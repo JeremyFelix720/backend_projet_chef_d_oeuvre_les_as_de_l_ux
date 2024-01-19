@@ -17,7 +17,7 @@ Content-Type: application/json
   "city": "Cruet",
   "postalCode": 73800,
   "password": "Bloupy73!",
+  "rib": 123456,
   "points": 0,
-  "grade": "junior",
-  "rib": 123456
+  "grade": "junior"
 }

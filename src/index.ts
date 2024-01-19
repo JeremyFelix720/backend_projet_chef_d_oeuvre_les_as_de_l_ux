@@ -14,7 +14,6 @@ import { PageModel } from './models/junction/PageModel';
 // import { UserHasMemoSheetModel } from './models/junction/UserHasMemoSheetModel';
 
 
-// const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
 const databaseHost = process.env.HOST as string;
 const databasePassword = process.env.PASSWORD as string;
 const databaseName = process.env.DATABASE_NAME as string;
@@ -156,5 +155,5 @@ app.get('/toto', (req, res) => {
   });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${process.env.PORT}!`)
+  console.log(`Example app listening on port ${port}!`)
 });
