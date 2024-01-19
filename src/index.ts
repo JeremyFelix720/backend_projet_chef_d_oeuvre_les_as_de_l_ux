@@ -1,4 +1,4 @@
-import Root from "./Root"
+
 import { Sequelize, DataTypes } from 'sequelize';  // Voir : https://sequelize.org/docs/v6/getting-started/
 
 // Import des tables principales
@@ -12,8 +12,6 @@ import { ScenarioModel } from './models/junction/ScenarioModel';
 import { PageModel } from './models/junction/PageModel';
 // import { FavoriteModel } from './models/junction/FavoriteModel';
 // import { UserHasMemoSheetModel } from './models/junction/UserHasMemoSheetModel';
-
-Root();
 
 
 // const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
@@ -119,3 +117,44 @@ async function connexionTest() {
 }
 
 connexionTest();
+
+
+
+// ROUTING
+
+import express from "express"
+import "dotenv/config"
+
+import cors from 'cors'
+import bodyParser from "body-parser";
+
+import { userRouter } from "./router/UserRouter";
+// import authRouter from "./router/auth";
+// import projectRouter from "./router/project";
+
+
+const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
+
+const apiRouter = express.Router();
+
+require('dotenv').config();
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+apiRouter.use('/users', userRouter);
+app.use("/api", apiRouter);
+
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/toto', (req, res) => {
+    res.send('Toto');
+  });
+
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}!`)
+});

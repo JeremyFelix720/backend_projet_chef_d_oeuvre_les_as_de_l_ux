@@ -1,5 +1,23 @@
 ###
-GET http://localhost:3022/
+GET http://localhost:3052/
 
 ###
-GET http://localhost:3022/toto
+GET http://localhost:3052/toto
+
+###
+// Création d'un utilisateur
+POST http://localhost:3052/api/auth/local/register
+Content-Type: application/json
+
+{
+  "pseudonym": "Jéjé3873!",
+  "birthDate": "???",
+  "email": "jeremyfelix41@gmail.com",
+  "phoneNumber": 0650770590,
+  "city": "Cruet",
+  "postalCode": 73800,
+  "password": "Bloupy73!",
+  "points": 0,
+  "grade": "junior",
+  "rib": 123456
+}
