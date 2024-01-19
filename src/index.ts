@@ -1,7 +1,4 @@
-import express from "express"
-import "dotenv/config"
-import cors from 'cors'
-import bodyParser from "body-parser";
+import Root from "./Root"
 import { Sequelize, DataTypes } from 'sequelize';  // Voir : https://sequelize.org/docs/v6/getting-started/
 
 // Import des tables principales
@@ -16,15 +13,10 @@ import { PageModel } from './models/junction/PageModel';
 // import { FavoriteModel } from './models/junction/FavoriteModel';
 // import { UserHasMemoSheetModel } from './models/junction/UserHasMemoSheetModel';
 
-
-require('dotenv').config();
-
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+Root();
 
 
-const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
+// const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
 const databaseHost = process.env.HOST as string;
 const databasePassword = process.env.PASSWORD as string;
 const databaseName = process.env.DATABASE_NAME as string;
@@ -127,15 +119,3 @@ async function connexionTest() {
 }
 
 connexionTest();
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/toto', (req, res) => {
-    res.send('Toto');
-  });
-
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
