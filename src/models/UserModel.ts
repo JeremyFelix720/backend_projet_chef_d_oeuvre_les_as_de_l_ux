@@ -4,7 +4,7 @@ export const UserModel = (sequelize: Sequelize) => {
 
   return sequelize.define('user', {
     pseudonym: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false, // champs obligatoire (option par défaut)
       unique: true // enregistrement unique
     },
