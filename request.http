@@ -41,3 +41,6 @@ Content-Type: application/json
 
 ###
 GET {{start_url}}/api/users/
+
+###
+GET {{start_url}}/api/users/1

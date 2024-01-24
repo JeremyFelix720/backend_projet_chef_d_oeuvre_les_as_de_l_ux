@@ -88,3 +88,10 @@ userRouter.get("/", async (req, res) => {
   const users = await User.findAll();
   res.json(users);
 });
+
+// Lecture d'un utilisateur
+userRouter.get("/:id", async (req, res) => {
+  const userId = req.params.id;
+  const savedUser = await User.findByPk(userId);
+  res.status(200).json(savedUser);
+})
