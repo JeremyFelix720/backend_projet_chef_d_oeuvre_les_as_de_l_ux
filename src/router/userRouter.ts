@@ -95,3 +95,34 @@ userRouter.get("/:id", async (req, res) => {
   const savedUser = await User.findByPk(userId);
   res.status(200).json(savedUser);
 })
+
+// Modification d'un utilisateur
+userRouter.put("/:id", async (req, res) => {
+  const userId = req.params.id;
+  const userPseudo = req.body.pseudonym;
+  const userEmail = req.body.email;
+  const userPhoneNumber = req.body.phoneNumber;
+  const userCity = req.body.city;
+  const userPostalCode = req.body.postalCode;
+  const userPassword = req.body.password;
+  const userRib = req.body.rib;
+  const userPoints = req.body.points;
+  const userGrade = req.body.grade;
+
+  const userModified = {
+    pseudonym: userPseudo,
+    email: userEmail,
+    phoneNumber: userPhoneNumber,
+    city: userCity,
+    postalCode: userPostalCode,
+    password: userPassword,
+    rib: userRib,
+    points: userPoints,
+    grade: userGrade
+  };
+
+  await User.update(userModified, {where:
+      {id: userId}
+    });
+  res.status(200).json(userModified);
+})
