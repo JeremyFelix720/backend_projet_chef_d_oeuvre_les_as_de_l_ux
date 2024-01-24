@@ -83,16 +83,8 @@ userRouter.post("/local/register", async (req, res) => {
     }
 })
 
-// Lecture d'un utilisateur
-
-
-
 // Lecture des utilisateurs
-
-
-
-// Modification d'un utilisateur
-
-
-
-// Suppression d'un utilisateur
+userRouter.get("/", async (req, res) => {
+  const users = await User.findAll();
+  res.json(users);
+});

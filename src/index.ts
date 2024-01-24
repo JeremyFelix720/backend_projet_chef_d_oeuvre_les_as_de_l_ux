@@ -104,7 +104,7 @@ MemoSheet.belongsToMany(User, { through: 'user_has_memo_sheet' });
 
 
 sequelize.sync( {force: true} )  // Réinitialise les données de la BDD à chaque fois que l'on execute le programme avec la commande "npm run dev" ou "npm run start".
- 
+
 // sequelize.sync()  // Conserve les données de la BDD à chaque fois que l'on execute le programme avec la commande "npm run dev" ou "npm run start".
 
 

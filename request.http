@@ -1,7 +1,6 @@
 
 @start_url = http://localhost:3052
 
-
 ###
 GET {{start_url}}/
 
@@ -9,7 +8,6 @@ GET {{start_url}}/
 GET {{start_url}}/toto
 
 ###
-// Création d'un utilisateur
 POST {{start_url}}/api/users/local/register
 Content-Type: application/json
 
@@ -40,3 +38,6 @@ Content-Type: application/json
   "points": 0,
   "grade": "junior"
 }
+
+###
+GET {{start_url}}/api/users/
