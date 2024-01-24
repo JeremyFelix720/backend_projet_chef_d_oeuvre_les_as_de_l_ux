@@ -3,6 +3,12 @@ import { DataTypes, Sequelize } from "sequelize";
 export const UserModel = (sequelize: Sequelize) => {
 
   return sequelize.define('user', {
+
+    pseudonym: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+
+    /*
     pseudonym: {
       type: DataTypes.STRING,
       allowNull: false, // champs obligatoire (option par défaut)
@@ -15,7 +21,7 @@ export const UserModel = (sequelize: Sequelize) => {
     },
     email: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true // enregistrement unique
     },
     phoneNumber: {
       type: DataTypes.NUMBER,
@@ -44,5 +50,6 @@ export const UserModel = (sequelize: Sequelize) => {
     },
     points: DataTypes.NUMBER,
     grade: DataTypes.STRING,
+    */
   });
 }

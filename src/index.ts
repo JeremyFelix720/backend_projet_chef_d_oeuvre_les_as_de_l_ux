@@ -33,6 +33,7 @@ export const sequelize = new Sequelize(database_name, username, password, {
 });
 */
 
+// Création de la BDD
 export const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: 'db/database.sqlite'
@@ -102,8 +103,9 @@ User.belongsToMany(MemoSheet, { through: 'user_has_memo_sheet' });
 MemoSheet.belongsToMany(User, { through: 'user_has_memo_sheet' });
 
 
-sequelize.sync({ force: true }); // permet de réinitialiser la BDD (et de mettre à jour les noms des tables, des champs et de vider le contenu)
-// sequelize.sync();
+sequelize.sync( {force: true} )  // Réinitialise les données de la BDD à chaque fois que l'on execute le programme avec la commande "npm run dev" ou "npm run start".
+
+// sequelize.sync()  // Conserve les données de la BDD à chaque fois que l'on execute le programme avec la commande "npm run dev" ou "npm run start".
 
 
 async function connexionTest() {
@@ -121,20 +123,18 @@ connexionTest();
 
 // ROUTING
 
-import express from "express"
-import "dotenv/config"
+import express from "express"; // framework pour executer le back
+import "dotenv/config"; // cela permet de récupérer des infos de config du .env
 
-import cors from 'cors'
+import cors from 'cors'; // permet la communication de données entre plusieurs partie du projet
 import bodyParser from "body-parser";
 
-import { userRouter } from "./router/UserRouter";
-// import authRouter from "./router/auth";
-// import projectRouter from "./router/project";
+import { userRouter } from "./router/userRouter";
 
 
 const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
+const apiRouter = express.Router(); // Initialisation des routes. C'est le début de l'url après le nom du site, c'est-à-dire "/api"
 
-const apiRouter = express.Router();
 
 require('dotenv').config();
 
@@ -142,7 +142,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Les entités dans les routes sont toujours au pluriel
 apiRouter.use('/users', userRouter);
+// apiRouter.use('/auth', authRouter);
+// apiRouter.use('/projects', projectRouter );
+// apiRouter.use('/memo_sheets', memoSheetRouter );
+
+
 app.use("/api", apiRouter);
 
 
@@ -154,6 +160,7 @@ app.get('/toto', (req, res) => {
     res.send('Toto');
   });
 
+
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${port}!`)
-});
+}); // permet au site d'être executé.
