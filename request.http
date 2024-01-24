@@ -16,5 +16,27 @@ Content-Type: application/json
 {
   "pseudonym": "Thomas",
   "email": "thomaslaforge@gmail.com",
-  "password": "tomtom1234"
+  "phoneNumber": "0648735915",
+  "city": "Grenoble",
+  "postalCode": 38000,
+  "password": "tomtom1234",
+  "rib": "FR00 0000 0000 0000 0000 0000 000",
+  "points": 0,
+  "grade": "junior"
+}
+
+###
+POST {{start_url}}/api/users/local/register
+Content-Type: application/json
+
+{
+  "pseudonym": "Jéjé3873!",
+  "email": "jeremyfelix41@gmail.com",
+  "phoneNumber": "0650770590",
+  "city": "Cruet",
+  "postalCode": 73800,
+  "password": "Bloupy73!",
+  "rib": "FR00 0000 0000 0000 0000 0000 000",
+  "points": 0,
+  "grade": "junior"
 }

@@ -1,40 +1,48 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 export const UserModel = (sequelize: Sequelize) => {
-
+ 
   return sequelize.define('user', {
-
-    pseudonym: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-
-    /*
     pseudonym: {
       type: DataTypes.STRING,
       allowNull: false, // champs obligatoire (option par défaut)
       unique: true // enregistrement unique
     },
+    /*
     birthDate: {
       type: DataTypes.DATE,
       allowNull: true, // champ non obligatoire
       unique: false // enregistrement non unique
     },
+    */
     email: {
       type: DataTypes.STRING,
       unique: true // enregistrement unique
     },
     phoneNumber: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: true, // champ non obligatoire
       unique: true // enregistrement unique
     },
+    /*
+    streetNumber: {
+      type: DataTypes.NUMBER,
+      allowNull: true, // champ non obligatoire
+      unique: false // enregistrement non unique
+    },
+    streetName: {
+      type: DataTypes.STRING,
+      allowNull: true, // champ non obligatoire
+      unique: false // enregistrement non unique
+    },
+    */
     city: {
       type: DataTypes.STRING,
       allowNull: true, // champ non obligatoire
       unique: false // enregistrement non unique
     },
     postalCode: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.BIGINT,
       allowNull: true, // champ non obligatoire
       unique: false // enregistrement non unique
     },
@@ -44,12 +52,11 @@ export const UserModel = (sequelize: Sequelize) => {
       unique: false // enregistrement non unique
     },
     rib: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: true, // champ non obligatoire
       unique: true // enregistrement unique
     },
-    points: DataTypes.NUMBER,
+    points: DataTypes.BIGINT,
     grade: DataTypes.STRING,
-    */
   });
 }
