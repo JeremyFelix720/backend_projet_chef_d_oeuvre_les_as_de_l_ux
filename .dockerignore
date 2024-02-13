@@ -1,0 +1,7 @@
+node_modules
+db
+dist
+Dockerfile
+request.http
+.gitignore
+.dockerignore
