@@ -50,7 +50,7 @@ export const Scenario = ScenarioModel(sequelize);
 export const Page = PageModel(sequelize);
 // export const Favorite = FavoriteModel(sequelize);
 // export const UserHasMemoSheet = UserHasMemoSheetModel(sequelize);
-
+// export const ScenarioHasPage = ScenarioHasPageModel(sequelize);
 
 // Création des clés référentielles dans les différentes tables par Sequelize
 
@@ -89,6 +89,12 @@ Page.belongsTo(Comment);
 // un projet peut être mis en favori par 0 ou plusieurs utilisateur(s).
 User.belongsToMany(Project, { through: 'favorite' }); 
 Project.belongsToMany(User, { through: 'favorite' });
+
+// RELATION *, * ("many to many")
+// un scénario peut avoir 1 ou plusieurs page(s).
+// une page peut appartenir à 0 ou à plusieurs scénario(s).
+Scenario.belongsToMany(Page, { through: 'scenario_has_page' }); 
+Page.belongsToMany(Scenario, { through: 'scenario_has_page' });
 
 // RELATION *, * ("many to many")
 // un utilisateur peut commenter 0 ou plusieurs projet(s).

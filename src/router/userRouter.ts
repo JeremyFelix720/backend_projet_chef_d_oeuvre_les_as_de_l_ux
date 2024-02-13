@@ -126,3 +126,39 @@ userRouter.put("/:id", async (req, res) => {
     });
   res.status(200).json(userModified);
 })
+
+// Suppression d'un utilisateur
+
+/*
+userRouter.delete("/:id", async (req, res) => {
+  const userId = req.params.id;
+  const numberOfRegistrationDeleted = await User.destroy({where:
+    { id: userId }
+  });
+
+  if(numberOfRegistrationDeleted === 0) {
+    res.status(400).json(
+      {
+        message: "Aucun enregistrement n'a été supprimé."
+      }
+    );
+  } else {
+    res.status(200).json(
+      {
+        message: "Enregistrement bien supprimé."
+      }
+    );
+  }
+})
+*/
+
+userRouter.delete("/:id", async (req, res) => {
+  const actual = await User.findOne({ where: { id: req.params.id } });
+  if (actual) {
+      await actual.destroy();
+      res.end("User deleted");
+  }
+  else {
+      res.end("User not found");
+  }
+});
