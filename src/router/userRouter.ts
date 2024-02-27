@@ -85,8 +85,8 @@ userRouter.post("/local/register", async (req, res) => {
 
 // Lecture des utilisateurs
 userRouter.get("/", async (req, res) => {
-  const users = await User.findAll();
-  res.json(users);
+  const savedUsers = await User.findAll();
+  res.json(savedUsers);
 });
 
 // Lecture d'un utilisateur
@@ -153,9 +153,9 @@ userRouter.delete("/:id", async (req, res) => {
 */
 
 userRouter.delete("/:id", async (req, res) => {
-  const actual = await User.findOne({ where: { id: req.params.id } });
-  if (actual) {
-      await actual.destroy();
+  const savedUser = await User.findOne({ where: { id: req.params.id } });
+  if (savedUser) {
+      await savedUser.destroy();
       res.end("User deleted");
   }
   else {

@@ -1,4 +1,3 @@
-
 import { Sequelize, DataTypes } from 'sequelize';  // Voir : https://sequelize.org/docs/v6/getting-started/
 
 // Import des tables principales
@@ -12,7 +11,6 @@ import { ScenarioModel } from './models/junction/ScenarioModel';
 import { PageModel } from './models/junction/PageModel';
 // import { FavoriteModel } from './models/junction/FavoriteModel';
 // import { UserHasMemoSheetModel } from './models/junction/UserHasMemoSheetModel';
-
 
 const databaseHost = process.env.HOST as string;
 const databasePassword = process.env.PASSWORD as string;
@@ -126,37 +124,23 @@ async function connexionTest() {
 connexionTest();
 
 
-
 // ROUTING
 
 import express from "express"; // framework pour executer le back
 import "dotenv/config"; // cela permet de récupérer des infos de config du .env
-
 import cors from 'cors'; // permet la communication de données entre plusieurs partie du projet
-import bodyParser from "body-parser";
-
 import { userRouter } from "./router/userRouter";
 
-
 const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
-const apiRouter = express.Router(); // Initialisation des routes. C'est le début de l'url après le nom du site, c'est-à-dire "/api"
-
 
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(express.json());
 
-// Les entités dans les routes sont toujours au pluriel
-apiRouter.use('/users', userRouter);
-// apiRouter.use('/auth', authRouter);
-// apiRouter.use('/projects', projectRouter );
-// apiRouter.use('/memo_sheets', memoSheetRouter );
-
-
-app.use("/api", apiRouter);
-
+app.use('/api/users', userRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
