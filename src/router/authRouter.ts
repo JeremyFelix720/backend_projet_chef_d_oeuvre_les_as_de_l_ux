@@ -1,5 +1,12 @@
+import { Router } from "express";
+import { TokenBlackList, User } from "../index";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import "dotenv/config";
+import { DecodeToken, checkToken } from "../middlewares/checkToken"
 
-/*
+
+export const authRouter = Router();
 
 // Connexion d'un utilisateur
 authRouter.post("/local", async (req, res) => {
@@ -46,5 +53,3 @@ authRouter.post("/logout", checkToken, async (req, res) => {
       res.status(404).send("User not found");
   }
 })
-
-*/

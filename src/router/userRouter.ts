@@ -2,6 +2,8 @@ import { Router, Response, Request } from "express";
 import { User } from "../index";
 import bcrypt from "bcrypt";
 import "dotenv/config";
+import { DecodeToken, checkToken } from "../middlewares/checkToken";
+import jwt from "jsonwebtoken";
 
 export const userRouter = Router();
 
@@ -160,5 +162,19 @@ userRouter.delete("/:id", async (req, res) => {
   }
   else {
       res.end("User not found");
+  }
+});
+
+
+// Lecture de l'utilisateur connecté
+userRouter.get("/me", checkToken, async (req, res) => {
+  const decoded = jwt.decode(req.token!) as DecodeToken
+  const user = await User.findOne({ where: { id: decoded.id } });
+  if (user) {
+      delete user.dataValues.password;
+      res.json(user);
+  }
+  else {
+      res.status(404).send("User not found");
   }
 });
