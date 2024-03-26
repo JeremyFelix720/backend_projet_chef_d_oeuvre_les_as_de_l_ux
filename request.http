@@ -1,5 +1,86 @@
-###
-GET http://localhost:3022/
+
+@start_url = http://localhost:3052
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicHNldWRvbnltIjoiSsOpasOpMzg3MyEiLCJlbWFpbCI6ImplcmVteWZlbGl4NDFAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIwNjUwNzcwNTkwIiwiY2l0eSI6IkNydWV0IiwicG9zdGFsQ29kZSI6NzM4MDAsInJpYiI6IkZSMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMCIsInBvaW50cyI6MCwiZ3JhZGUiOiJqdW5pb3IiLCJjcmVhdGVkQXQiOiIyMDI0LTAzLTI1VDE1OjU4OjA0LjYzNVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTAzLTI1VDE1OjU4OjA0LjYzNVoiLCJpYXQiOjE3MTE0NDQ4MjN9.VPgvDLPQoI7BIv18HnYOfU2IZK8GiR37-_U4KisflZE
 
 ###
-GET http://localhost:3022/toto
+GET {{start_url}}/
+
+###
+GET {{start_url}}/toto
+
+###
+POST {{start_url}}/api/users/local/register
+Content-Type: application/json
+
+{
+  "pseudonym": "Thomas",
+  "email": "thomaslaforge@gmail.com",
+  "phoneNumber": "0648735915",
+  "city": "Grenoble",
+  "postalCode": 38000,
+  "password": "tomtom1234",
+  "rib": "FR00 0000 0000 0000 0000 0000 000",
+  "points": 0,
+  "grade": "junior"
+}
+
+###
+POST {{start_url}}/api/users/local/register
+Content-Type: application/json
+
+{
+  "pseudonym": "Jéjé3873!",
+  "email": "jeremyfelix41@gmail.com",
+  "phoneNumber": "0650770590",
+  "city": "Cruet",
+  "postalCode": 73800,
+  "password": "Bloupy73!",
+  "rib": "FR00 0000 0000 0000 0000 0000 000",
+  "points": 0,
+  "grade": "junior"
+}
+
+###
+GET {{start_url}}/api/users/
+
+###
+GET {{start_url}}/api/users/1
+
+###
+PUT {{start_url}}/api/users/1
+Content-Type: application/json
+
+{
+  "pseudonym": "Tomate",
+  "city": "New-York"
+}
+
+###
+DELETE {{start_url}}/api/users/1
+
+###
+GET {{start_url}}/api/users/me
+Authorization: Bearer {{token}}
+
+###
+POST {{start_url}}/api/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "thomaslaforge@gmail.com",
+  "password": "tomtom1234"
+}
+
+###
+POST {{start_url}}/api/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "jeremyfelix41@gmail.com",
+  "password": "Bloupy73!"
+}
+
+
+###
+POST {{start_url}}/api/auth/logout
+Authorization: Bearer {{token}}
