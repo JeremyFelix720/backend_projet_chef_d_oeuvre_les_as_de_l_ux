@@ -1,6 +1,6 @@
 
 @start_url = http://localhost:3052
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicHNldWRvbnltIjoiSsOpasOpMzg3MyEiLCJlbWFpbCI6ImplcmVteWZlbGl4NDFAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIwNjUwNzcwNTkwIiwiY2l0eSI6IkNydWV0IiwicG9zdGFsQ29kZSI6NzM4MDAsInJpYiI6IkZSMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMCIsInBvaW50cyI6MCwiZ3JhZGUiOiJqdW5pb3IiLCJjcmVhdGVkQXQiOiIyMDI0LTAzLTI1VDE0OjU2OjAwLjE2NloiLCJ1cGRhdGVkQXQiOiIyMDI0LTAzLTI1VDE0OjU2OjAwLjE2NloiLCJpYXQiOjE3MTEzODE5NDZ9._B7NHqIe7IEOAjiPRL_n7YZl0wtZSlcsJS44q0WKORI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicHNldWRvbnltIjoiSsOpasOpMzg3MyEiLCJlbWFpbCI6ImplcmVteWZlbGl4NDFAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIwNjUwNzcwNTkwIiwiY2l0eSI6IkNydWV0IiwicG9zdGFsQ29kZSI6NzM4MDAsInJpYiI6IkZSMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMCIsInBvaW50cyI6MCwiZ3JhZGUiOiJqdW5pb3IiLCJjcmVhdGVkQXQiOiIyMDI0LTAzLTI1VDE1OjU4OjA0LjYzNVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTAzLTI1VDE1OjU4OjA0LjYzNVoiLCJpYXQiOjE3MTE0NDQ4MjN9.VPgvDLPQoI7BIv18HnYOfU2IZK8GiR37-_U4KisflZE
 
 ###
 GET {{start_url}}/
@@ -59,7 +59,7 @@ Content-Type: application/json
 DELETE {{start_url}}/api/users/1
 
 ###
-GET http://localhost:1337/api/users/me
+GET {{start_url}}/api/users/me
 Authorization: Bearer {{token}}
 
 ###
@@ -83,4 +83,4 @@ Content-Type: application/json
 
 ###
 POST {{start_url}}/api/auth/logout
-Authorization: Bearer {{start_url}}
+Authorization: Bearer {{token}}
